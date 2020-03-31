@@ -1,11 +1,12 @@
 {
-    "name": "ab1-viewer",
-    "version": "0.0.1",
+    "name": "@altius/ab1-viewer",
+    "version": "0.0.1-alpha.3",
     "description": "React web trace component for viewing ab1 files",
     "main": "./lib/Ab1ViewerComponent.js",
     "license": "MIT",
     "scripts": {
-        "build": "webpack"
+        "build": "webpack",
+        "prepublishOnly": "npm run build"
     },
     "peerDependencies": {
         "prop-types": "^15.6.0",
