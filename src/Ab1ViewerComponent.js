@@ -1,12 +1,7 @@
 import React, { useEffect } from 'react';
 import { ab1ToJson } from 'bio-parsers';
 import PropTypes from 'prop-types';
-import { css } from '@emotion/core'
 import styled from "@emotion/styled"
-
-const style = css({
-    backgroundColor: "blue"
-})
 
 
 const Styled = styled("webTraceViewer")`
