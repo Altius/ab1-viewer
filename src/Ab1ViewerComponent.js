@@ -1,7 +1,39 @@
 import React, { useEffect } from 'react';
 import { ab1ToJson } from 'bio-parsers';
 import PropTypes from 'prop-types';
+import { css } from '@emotion/core'
+import styled from "@emotion/styled"
 
+const style = css({
+    backgroundColor: "blue"
+})
+
+
+const Styled = styled("webTraceViewer")`
+    .ab1Viewer__label.ab1Viewer__zoomLabel:not(:first-child) {
+        margin-left: 10px;
+    }
+
+    .ab1Viewer__label {
+        margin-right: 5px;
+    }
+
+    .ab1Viewer__buttonX,
+    .ab1Viewer__buttonY,
+    .ab1Viewer__buttonReset {
+        background-color: #EAAC6F;
+        height: 20px;
+    }
+
+    .ab1Viewer__buttonX,
+    .ab1Viewer__buttonY {
+        width: 20px;
+    }
+
+    .ab1Viewer__buttonReset {
+        width: 50px;
+    }
+`
 
 const propTypes = {
     ab1File: function (props, propName, componentName) {
@@ -337,20 +369,25 @@ const WebTraceViewer = (props) => {
     }
 
     return (
-        <div>
-            <div id="wtvCanvas1Container" style={containerStyle}>
-                <canvas id="webTraceViewerCanvas1" height={height} ref={canvasRef}>
-                    Your browser doesn't supoort this Trace Viewer.
-                </canvas>
+        <Styled>
+            <div className="ab1Viewer__testClass another_class">
+                <div id="wtvCanvas1Container" style={containerStyle}>
+                    <canvas id="webTraceViewerCanvas1" height={height} ref={canvasRef}>
+                        Your browser doesn't supoort this Trace Viewer.
+                    </canvas>
+                </div>
+                <div>
+                    <span className="ab1Viewer__label ab1Viewer__zoomLabel">Zoom:</span>
+                    <button className="ab1Viewer__buttonReset" onClick={() => phy.zoomReset()}>Reset</button>
+                    <span className="ab1Viewer__label ab1Viewer__zoomLabel">X</span>
+                    <button className="ab1Viewer__buttonX" onClick={() => phy.zoomOut('x')}>-</button>
+                    <button className="ab1Viewer__buttonX" onClick={() => phy.zoomIn('x')}>+</button>
+                    <span className="ab1Viewer__label ab1Viewer__zoomLabel">Y</span>
+                    <button className="ab1Viewer__buttonY" onClick={() => phy.zoomOut('y')}>-</button>
+                    <button className="ab1Viewer__buttonY" onClick={() => phy.zoomIn('y')}>+</button>
+                </div>
             </div>
-            <button onClick={() => phy.zoomReset()}>Reset</button>
-            x
-            <button onClick={() => phy.zoomOut('x')}>-</button>
-            <button onClick={() => phy.zoomIn('x')}>+</button>
-            Y
-            <button onClick={() => phy.zoomOut('y')}>-</button>
-            <button onClick={() => phy.zoomIn('y')}>+</button>
-        </div>
+        </Styled>
     )
 }
 

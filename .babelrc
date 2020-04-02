@@ -3,5 +3,6 @@
         "react",
         "env",
         "stage-0"
-    ]
+    ],
+    "plugins": [["emotion", { "sourceMap": true }]]
 }

@@ -1,4 +1,6 @@
-var path = require('path');
+const path = require('path');
+const packageJson = require("./package.json");
+// const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 
 module.exports = {
     mode: 'production',
@@ -14,10 +16,18 @@ module.exports = {
                 test: /\.jsx?$/,
                 exclude: /(node_modules)/,
                 use: 'babel-loader'
-            }
+            },
+            // {
+            //     test: /\.css$/i,
+            //     use: [
+            //         MiniCssExtractPlugin.loader,
+            //         'css-loader'
+            //     ]
+            // }
         ]
     },
-    externals: {
-        react: "react",
-    },
+    externals: Array.from(Object.keys(packageJson.peerDependencies)),
+    // plugins: [
+    //     new MiniCssExtractPlugin()
+    // ]
 }
