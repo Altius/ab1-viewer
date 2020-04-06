@@ -18,5 +18,5 @@ module.exports = {
             }
         ]
     },
-    externals: Array.from(Object.keys(packageJson.peerDependencies))
+    externals: Object.keys(packageJson.peerDependencies)
 }
